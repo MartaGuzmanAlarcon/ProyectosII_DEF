@@ -5,12 +5,22 @@ frecuencia_original = 1000;  % Hz
 muestras_por_ventana = round(frecuencia_original * 10); % 10000 samples
 
 % Nombres de los archivos de prueba: Escaleras, Sentada, Tumbada
-file1 = 'opensignals_Escaleras_22-58-24.txt';
-file2 = 'opensignals_Sentada_22-53-55.txt';
-file3 = 'opensignals_tumbada_22-50-01.txt';
+file1 = 'TopM_R1_2024-04-03.txt';
+file2 = 'TopM_R2_2024-04-09.txt';
+file3 = 'TopM_R3_2024-04-15.txt';
+file4 = 'TopM_R4_2024-04-22.txt';
 
+file5 = 'TopS_R1_2024-04-04.txt';
+file6 = 'TopS_R2_2024-04-12.txt';
+file7 = 'TopS_R3_2024-04-16.txt';
+file8 = 'TopS_R4_2024-04-23.txt';
 
-files_pruebaCortas_OpenSignal = {file1, file2, file3};
+file9  = 'TopXS_R1_2024-04-05.txt';
+file10 = 'TopXS_R2_2024-04-11.txt';
+file11 = 'TopXS_R3__2024-04-18.txt';
+file12 = 'opensignals_Registro1h_23-04-49.txt';
+
+files_pruebaCortas_OpenSignal = {file1, file2, file3, file4, file5, file6, file7, file8, file9, file10, file11, file12};
 
 % Loop sobre cada archivo
 for file_index = 1:numel(files_pruebaCortas_OpenSignal)
@@ -24,13 +34,14 @@ for file_index = 1:numel(files_pruebaCortas_OpenSignal)
     posicion_y = data(:, 5);
     posicion_z = data(:, 4);
 
-    % CALIBRACIONES add file 0
-    min_x = 20000;%min(posicion_x);
-    min_y = 20000;%min(posicion_y);
-    min_z = 20000;%min(posicion_z);
-    max_x = 36000;%max(posicion_x);
-    max_y = 36000;%max(posicion_y);
-    max_z = 36000;%max(posicion_z);
+    % CALIBRACIONES -> caluladas en el archivo ValoresCalibraciones
+    min_x = 26568;
+    min_y = 32036;
+    min_z = 32444;
+
+    max_x = 33580;
+    max_y = 38632;
+    max_z = 35940;
 
     aceleracion_x =  2*(posicion_x-min_x)/(max_x-min_x) -1;
     aceleracion_y =  2*(posicion_y-min_y)/(max_y-min_y) -1;
