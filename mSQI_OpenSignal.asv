@@ -10,9 +10,9 @@ file6 = 'TopS_R2_2024-04-12.txt';
 file7 = 'TopS_R3_2024-04-16.txt';
 file8 = 'TopS_R4_2024-04-23.txt';
 
-file9 = 'TopXS_R1_2024-04-05.txt';
-file10 = 'TopXS_R2_2024-04-11.txt';
-file11 = 'TopXS_R3__2024-04-18.txt';
+file9 = 'opensignals_Escaleras_22-58-24.txt';
+file10 = 'opensignals_Sentada_22-53-55.txt';
+file11= 'opensignals_tumbada_22-50-01.txt';
 file12 = 'opensignals_Registro1h_23-04-49.txt';
 
 files_pruebaCortas_OpenSignal = {file1, file2, file3, file4, file5, file6, file7, file8, file9, file10, file11, file12};
