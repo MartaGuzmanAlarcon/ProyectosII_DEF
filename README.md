@@ -11,3 +11,7 @@ mSQI_OpenSignal:
 OpenSignal_correlation_powerANDmSQI:
 - Calculates the correlation between the power and the geometricMean_vector.
 - Creates a file to save the correlations.
+
+ValoresCalibraciones:
+- Calculates first the max and min of x,y,z for each calibration file.
+- Calculates the max and min of those x,y,x that have been calculated ("global max and global min").
