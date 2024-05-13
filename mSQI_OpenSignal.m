@@ -13,7 +13,7 @@ file8 = 'TopS_R4_2024-04-23.txt';
 file9 = 'TopXS_R1_2024-04-05.txt';
 file10 = 'TopXS_R2_2024-04-11.txt';
 file11 = 'TopXS_R3__2024-04-18.txt';
-file12 = 'opensignals_Registro1h_23-04-49.txt';
+file12 = 'TopXS_R4_2024-04-29.txt';
 
 files_pruebaCortas_OpenSignal = {file1, file2, file3, file4, file5, file6, file7, file8, file9, file10, file11, file12};
 
