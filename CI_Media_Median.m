@@ -221,12 +221,18 @@ tiledlayout(3,1)
 
 nexttile
 histogram(indexes_topM_v, 20);
+xlabel('mSQI Values');
+ylabel('count');
 title(['Histogram for indexes top M']);
 
 nexttile
 histogram(indexes_topS_v, 20);
+xlabel('mSQI Values');
+ylabel('count');
 title(['Histogram for indexes top S']);
 
 nexttile
 histogram(indexes_topXS_v, 20);
+xlabel('mSQI Values');
+ylabel('count');
 title(['Histogram for indexes top XS']);
