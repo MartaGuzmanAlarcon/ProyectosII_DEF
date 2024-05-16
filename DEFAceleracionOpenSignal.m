@@ -4,7 +4,7 @@ frecuencia_original = 1000;  % Hz
 % Número de muestras por ventana de 10 segundos
 muestras_por_ventana = round(frecuencia_original * 10); % 10000 samples
 
-% Nombres de los archivos de prueba: Escaleras, Sentada, Tumbada
+% Nombres de los archivos de prueba: 
 file1 = 'TopM_R1_2024-04-03.txt';
 file2 = 'TopM_R2_2024-04-09.txt';
 file3 = 'TopM_R3_2024-04-15.txt';
