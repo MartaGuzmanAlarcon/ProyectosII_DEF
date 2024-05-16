@@ -15,3 +15,7 @@ OpenSignal_correlation_powerANDmSQI:
 ValoresCalibraciones:
 - Calculates first the max and min of x,y,z for each calibration file.
 - Calculates the max and min of those x,y,x that have been calculated ("global max and global min").
+
+CI_Media_Median: 
+- Computes CI:  Within Each Register & Across Registers
+- Calculates the mean and median: topMvstopS,topMvstopXS,topSvstopXS
