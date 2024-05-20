@@ -1,5 +1,5 @@
 
-TEST = 0;
+TEST = 1;
 
 if (TEST)
     time_vector = 1:((7*60 + 59)*60); 
@@ -12,23 +12,14 @@ if (TEST)
     
 else
      time_vector = 1:(((7*60 + 59)*60)*1000-360000); 
-     
-    files_TopM = {'TopM_R1_2024-04-03.txt', 
-        'TopM_R2_2024-04-09.txt',
-        'TopM_R3_2024-04-15.txt';
-        'TopM_R4_2024-04-22.txt'};
 
-    files_TopS = {'TopS_R1_2024-04-04.txt', 
-        'TopS_R2_2024-04-12.txt',
-        'TopS_R3_2024-04-16.txt',
-        'TopS_R4_2024-04-23.txt';};
+         files_TopM = {'opensignals_Escaleras_22-58-24.txt'};
 
-    files_TopXS = {'TopXS_R1_2024-04-05.txt', 
-         'TopXS_R2_2024-04-11.txt',
-         'TopXS_R3__2024-04-18.txt',
-         'TopXS_R4_2024-04-29.txt'}; 
+    files_TopS = {'opensignals_Escaleras_22-58-24.txt'};
 
+    files_TopXS = {'opensignals_Escaleras_22-58-24.txt'}; 
 end 
+
 
 
 fileSets = {files_TopM, files_TopS, files_TopXS};
@@ -135,7 +126,7 @@ for i = 1:4
     histogram(indexes_topM{i}, 20);
     xlabel('mSQI Values');
     ylabel('count'); % ASK MAS INTERPRETACION
-    title(['Histogram for indexes\_topM{' num2str(i) '}']);
+    title(['Histogram for indexes\_topM_R{' num2str(i) '}']);
 end
 
 % Histograms for each register of TopS
@@ -144,7 +135,7 @@ for i = 1:4
     histogram(indexes_topS{i}, 20);
     xlabel('mSQI Values');
     ylabel('count');
-    title(['Histogram for indexes\_topS{' num2str(i) '}']);
+    title(['Histogram for indexes\_topS_R{' num2str(i) '}']);
 end
 
 % Histograms for each register of TopXS
@@ -153,7 +144,7 @@ for i = 1:4
     histogram(indexes_topXS{i}, 20);
     xlabel('mSQI Values');
     ylabel('count');
-    title(['Histogram for indexes\_topXS{' num2str(i) '}']);
+    title(['Histogram for indexes\_topXS_R{' num2str(i) '}']);
 end
 
 %histogram(indexes_topM{1}, 20)
