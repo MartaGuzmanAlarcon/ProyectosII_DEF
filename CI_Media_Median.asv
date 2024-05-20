@@ -1,5 +1,5 @@
 
-TEST = 1;
+TEST = 0;
 
 if (TEST)
     time_vector = 1:((7*60 + 59)*60); 
