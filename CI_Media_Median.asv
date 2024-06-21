@@ -1,7 +1,6 @@
-
 TEST = 0;
 
-if (TEST)
+if (1)
     time_vector = 1:((7*60 + 59)*60); 
     
     files_TopM = {'opensignals_Escaleras_22-58-24.txt','opensignals_Sentada_22-53-55.txt', 'opensignals_tumbada_22-50-01.txt', 'opensignals_tumbada_22-50-01.txt'};
@@ -12,14 +11,23 @@ if (TEST)
     
 else
      time_vector = 1:(((7*60 + 59)*60)*1000-360000); 
+     
+    files_TopM = {'TopM_R1_2024-04-03.txt', 
+        'TopM_R2_2024-04-09.txt',
+        'TopM_R3_2024-04-15.txt';
+        'TopM_R4_2024-04-22.txt'};
 
-         files_TopM = {'opensignals_Escaleras_22-58-24.txt'};
+    files_TopS = {'TopS_R1_2024-04-04.txt', 
+        'TopS_R2_2024-04-12.txt',
+        'TopS_R3_2024-04-16.txt',
+        'TopS_R4_2024-04-23.txt';};
 
-    files_TopS = {'opensignals_Escaleras_22-58-24.txt'};
+    files_TopXS = {'TopXS_R1_2024-04-05.txt', 
+         'TopXS_R2_2024-04-11.txt',
+         'TopXS_R3__2024-04-18.txt',
+         'TopXS_R4_2024-04-29.txt'}; 
 
-    files_TopXS = {'opensignals_Escaleras_22-58-24.txt'}; 
 end 
-
 
 
 fileSets = {files_TopM, files_TopS, files_TopXS};
@@ -120,13 +128,32 @@ CIMedian_topXS_R4vsR1R2R3 = estimateCIMedian(indexes_topXS{4},data_topXS_R1R2R3,
 CIMean_topXS_R4vsR1R2R3 = estimateCIMean(indexes_topXS{4},data_topXS_R1R2R3,alph,iter);
 
 
+
+% Comparison of the first and last register of each top -> washing effect
+
+%CI for TopM_R1 vs TopM_R4
+CIMedian_TopM_R1vsTopM_R4= estimateCIMedian(indexes_topM{1},indexes_topM{4},alph,iter);
+CIMean_TopM_R1vsTopM_R4 = estimateCIMean(indexes_topM{1},indexes_topM{4},alph,iter);
+
+%CI for TopS_R1 vs TopS_R4
+CIMedian_TopS_R1vsTopS_R4 = estimateCIMedian(indexes_topS{1},indexes_topS{4},alph,iter);
+CIMean_TopS_R1vsTopS_R4 = estimateCIMean(indexes_topS{1},indexes_topS{4},alph,iter);
+
+%CI for TopXS_R1 vs TopXS_R4
+CIMedian_TopXS_R1vsTopXS_R4= estimateCIMedian(indexes_topXS{1},indexes_topXS{4},alph,iter);
+CIMean_TopXS_R1vsTopXS_R4 = estimateCIMean(indexes_topXS{1},indexes_topS{4},alph,iter);
+
+filename= 'washingEffect_CI.csv'
+save(filename, 'CIMean_TopXS_R1vsTopXS_R4', 'CIMedian_TopXS_R1vsTopXS_R4', 'CIMedian_TopM_R1vsTopM_R4', 'CIMean_TopM_R1vsTopM_R4', 'CIMedian_TopS_R1vsTopS_R4', 'CIMean_TopS_R1vsTopS_R4');
+
+
 % Histograms for each register of TopM
 for i = 1:4
     figure;
     histogram(indexes_topM{i}, 20);
     xlabel('mSQI Values');
     ylabel('count'); % ASK MAS INTERPRETACION
-    title(['Histogram for indexes\_topM_R{' num2str(i) '}']);
+    title(['Histogram for indexes\_topM{' num2str(i) '}']);
 end
 
 % Histograms for each register of TopS
@@ -135,7 +162,7 @@ for i = 1:4
     histogram(indexes_topS{i}, 20);
     xlabel('mSQI Values');
     ylabel('count');
-    title(['Histogram for indexes\_topS_R{' num2str(i) '}']);
+    title(['Histogram for indexes\_topS{' num2str(i) '}']);
 end
 
 % Histograms for each register of TopXS
@@ -144,7 +171,7 @@ for i = 1:4
     histogram(indexes_topXS{i}, 20);
     xlabel('mSQI Values');
     ylabel('count');
-    title(['Histogram for indexes\_topXS_R{' num2str(i) '}']);
+    title(['Histogram for indexes\_topXS{' num2str(i) '}']);
 end
 
 %histogram(indexes_topM{1}, 20)
@@ -220,3 +247,6 @@ histogram(indexes_topXS_v, 20);
 xlabel('mSQI Values');
 ylabel('count');
 title(['Histogram for indexes top XS']);
+
+
+

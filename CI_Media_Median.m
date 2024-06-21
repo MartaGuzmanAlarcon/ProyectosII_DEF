@@ -1,6 +1,6 @@
 TEST = 0;
 
-if (TEST)
+if (1)
     time_vector = 1:((7*60 + 59)*60); 
     
     files_TopM = {'opensignals_Escaleras_22-58-24.txt','opensignals_Sentada_22-53-55.txt', 'opensignals_tumbada_22-50-01.txt', 'opensignals_tumbada_22-50-01.txt'};
@@ -128,6 +128,39 @@ CIMedian_topXS_R4vsR1R2R3 = estimateCIMedian(indexes_topXS{4},data_topXS_R1R2R3,
 CIMean_topXS_R4vsR1R2R3 = estimateCIMean(indexes_topXS{4},data_topXS_R1R2R3,alph,iter);
 
 
+% Comparison of the first and last register of each top -> washing effect
+
+% CI for TopM_R1 vs TopM_R4
+CIMedian_TopM_R1vsTopM_R4 = estimateCIMedian(indexes_topM{1}, indexes_topM{4}, alph, iter);
+CIMean_TopM_R1vsTopM_R4 = estimateCIMean(indexes_topM{1}, indexes_topM{4}, alph, iter);
+
+% CI for TopS_R1 vs TopS_R4
+CIMedian_TopS_R1vsTopS_R4 = estimateCIMedian(indexes_topS{1}, indexes_topS{4}, alph, iter);
+CIMean_TopS_R1vsTopS_R4 = estimateCIMean(indexes_topS{1}, indexes_topS{4}, alph, iter);
+
+% CI for TopXS_R1 vs TopXS_R4
+CIMedian_TopXS_R1vsTopXS_R4 = estimateCIMedian(indexes_topXS{1}, indexes_topXS{4}, alph, iter);
+CIMean_TopXS_R1vsTopXS_R4 = estimateCIMean(indexes_topXS{1}, indexes_topXS{4}, alph, iter);
+
+% Preparar datos para la tabla
+data = {
+    'CIMedian_TopM_R1vsTopM_R4', sprintf('[%.4f, %.4f]', CIMedian_TopM_R1vsTopM_R4);
+    'CIMean_TopM_R1vsTopM_R4', sprintf('[%.4f, %.4f]', CIMean_TopM_R1vsTopM_R4);
+    'CIMedian_TopS_R1vsTopS_R4', sprintf('[%.4f, %.4f]', CIMedian_TopS_R1vsTopS_R4);
+    'CIMean_TopS_R1vsTopS_R4', sprintf('[%.4f, %.4f]', CIMean_TopS_R1vsTopS_R4);
+    'CIMedian_TopXS_R1vsTopXS_R4', sprintf('[%.4f, %.4f]', CIMedian_TopXS_R1vsTopXS_R4);
+    'CIMean_TopXS_R1vsTopXS_R4', sprintf('[%.4f, %.4f]', CIMean_TopXS_R1vsTopXS_R4);
+};
+
+% Convertir los datos a una tabla
+T = cell2table(data(:,2)', 'VariableNames', data(:,1)');
+
+% Guardar la tabla en un archivo CSV
+filename = 'washingEffect_CI.csv';
+writetable(T, filename);
+
+
+
 % Histograms for each register of TopM
 for i = 1:4
     figure;
@@ -228,3 +261,6 @@ histogram(indexes_topXS_v, 20);
 xlabel('mSQI Values');
 ylabel('count');
 title(['Histogram for indexes top XS']);
+
+
+
