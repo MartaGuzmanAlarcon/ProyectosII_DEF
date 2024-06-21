@@ -16,9 +16,6 @@ for i = 1:numel(potencias_archivos_generados)
     % Leer los datos del archivo de potencia actual
     data_potencias = readmatrix(file_name_power);
 
-    % Aplicar la raíz cuadrada a cada dato de potencia
-   % data_potencias = sqrt(data_potencias);
-
     % Remove the last element from each column -> error de dim
     resultados_potenciax = data_potencias(1:end-1, 1); 
     resultados_potenciay = data_potencias(1:end-1, 2); 

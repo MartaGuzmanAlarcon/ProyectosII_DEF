@@ -1,0 +1,39 @@
+% Media y desviacion mSQI para ventanas de 10s
+
+archivos = {'mSQI_OpenSignal_TopM_R1_2024-04-03.txt.csv', ...
+            'mSQI_OpenSignal_TopM_R2_2024-04-09.txt.csv', ...
+            'mSQI_OpenSignal_TopM_R3_2024-04-15.txt.csv', ...
+            'mSQI_OpenSignal_TopM_R4_2024-04-22.txt.csv', ...
+            'mSQI_OpenSignal_TopS_R1_2024-04-04.txt.csv', ...
+            'mSQI_OpenSignal_TopS_R2_2024-04-12.txt.csv', ...
+            'mSQI_OpenSignal_TopS_R3_2024-04-16.txt.csv', ...
+            'mSQI_OpenSignal_TopS_R4_2024-04-23.txt.csv', ...
+            'mSQI_OpenSignal_TopXS_R1_2024-04-05.txt.csv', ...
+            'mSQI_OpenSignal_TopXS_R2_2024-04-11.txt.csv', ...
+            'mSQI_OpenSignal_TopXS_R3_2024-04-18.txt.csv', ...
+            'mSQI_OpenSignal_TopXS_R4_2024-04-29.txt.csv'};
+
+% Creo matrices para almacenar los resultados
+num_archivos = length(archivos);
+medias = zeros(num_archivos, 1);
+desviaciones = zeros(num_archivos, 1);
+
+% Calcular la media y la desviación estándar de la cuarta columna de cada archivo
+for i = 1:num_archivos
+    data = readtable(archivos{i});
+    geomMean_Vector = data{:, 1};
+    medias(i) = mean(geomMean_Vector);
+    desviaciones(i) = std(geomMean_Vector);
+    
+    % Imprimir resultados de cada archivo
+    fprintf('Archivo: %s\n', archivos{i});
+    fprintf('Media de dicha columna: %g\n', medias(i));
+    fprintf('Desviación estándar de la cuarta columna: %g\n\n', desviaciones(i));
+end
+
+% Crear una tabla con los resultados
+resultados = table(archivos', medias, desviaciones, ...
+                   'VariableNames', {'Archivo', 'Media', 'DesviacionEstandar'});
+
+% Escribir la tabla en un archivo CSV
+writetable(resultados, 'mSQI_10s_resultados_medias_desviaciones.csv');

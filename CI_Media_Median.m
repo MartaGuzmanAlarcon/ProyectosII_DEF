@@ -1,4 +1,3 @@
-
 TEST = 0;
 
 if (TEST)
