@@ -1,4 +1,3 @@
-
 TEST = 0;
 
 if (TEST)
@@ -21,7 +20,7 @@ if (TEST)
 else
      time_vector = 1:(((7*60 + 59)*60)*1000-360000); 
      
-     files_TopM = {'TopM_R1_2024-04-03.txt', 
+    files_TopM = {'TopM_R1_2024-04-03.txt', 
         'TopM_R2_2024-04-09.txt',
         'TopM_R3_2024-04-15.txt';
         'TopM_R4_2024-04-22.txt'};
@@ -35,8 +34,8 @@ else
          'TopXS_R2_2024-04-11.txt',
          'TopXS_R3__2024-04-18.txt',
          'TopXS_R4_2024-04-29.txt'}; 
- end
 
+end 
 
 
 fileSets = {files_TopM, files_TopS, files_TopXS};
@@ -47,6 +46,7 @@ for setIndex = 1: length(indexes)
     indexes{setIndex} = cell(1, length(currentFiles)); % indexes{1}= a un vector con 4 pos 
 
     for fileIndex = 1:length(currentFiles) % fileIndex = 1:length(currentFiles)=4
+
         data = ImportPluxData(currentFiles{fileIndex}, 3);
         ecg = data(time_vector);
         [kSQI_01_vector, sSQI_01_vector, pSQI_01_vector, rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector, dSQI_01_vector, geometricMean_vector, averageGeometricMean] = mSQI(ecg, 1000);
